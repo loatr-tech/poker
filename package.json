@@ -1,0 +1,9 @@
+{
+  "name": "poker",
+  "version": "1.0.0",
+  "description": "poker training",
+  "main": "index.js",
+  "repository": "https://github.com/loatr-tech/poker.git",
+  "author": "Shawn Chen <ethanloatrchen@gmail.com>",
+  "license": "MIT"
+}
