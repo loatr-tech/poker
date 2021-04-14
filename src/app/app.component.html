@@ -1,2 +1,14 @@
-<h1>This is the loatr tech poker site</h1>
-<pk-poker-chart></pk-poker-chart>
+<h1>Preflop Strategy</h1>
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+  <mat-tab
+    *ngFor="let position of preflopStrategy"
+    [label]="position.label">
+    <mat-tab-group>
+      <mat-tab
+        *ngFor="let option of position.options"
+        [label]="option.label">
+          <pk-poker-chart [range]="option.range"></pk-poker-chart>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-tab>
+</mat-tab-group>

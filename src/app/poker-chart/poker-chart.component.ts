@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { POKER_SIZE, POKER_ORDER, ACTION } from '../_utils/poker-constants';
 import { PokerHands } from '../_models/poker-hands';
-
-const HAHA = ['66','77','88','99','AQo','AKo','AA','AKs','AQs','AJs','ATs','A9s','A5s','KK','QQ','JJ','TT','KTs','QTs','JTs','98s','T9s','QJs','KJs','KQs'];
-
 @Component({
   selector: 'pk-poker-chart',
   templateUrl: './poker-chart.component.html',
   styleUrls: ['./poker-chart.component.scss']
 })
 export class PokerChartComponent implements OnInit {
+  @Input() range: any;
 
   chartMatrix: PokerHands[][] = [];
   ACTION = ACTION;
@@ -30,19 +28,19 @@ export class PokerChartComponent implements OnInit {
       chartMatrix.push(row);
     }
 
-    HAHA.forEach(element => {
+    console.log(this.range.hands);
+    this.range[0].hands.forEach((element: string) => {
       const [firstCard, secondCard, suit] = element.split('');
       const firstCardPos = POKER_ORDER[firstCard];
       const secondCardPos = POKER_ORDER[secondCard];
       if (suit === 's') {
-        const [i, j] = [firstCardPos, secondCardPos].sort();
-        chartMatrix[i][j].action = ACTION.TWO_BET;
+        chartMatrix[firstCardPos][secondCardPos].action = ACTION.TWO_BET;
       } else {
-        const [j, i] = [firstCardPos, secondCardPos].sort();
-        chartMatrix[i][j].action = ACTION.TWO_BET;
+        chartMatrix[secondCardPos][firstCardPos].action = ACTION.TWO_BET;
       }
     });
     this.chartMatrix = chartMatrix;
   }
+
 
 }

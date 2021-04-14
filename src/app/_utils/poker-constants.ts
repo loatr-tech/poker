@@ -24,3 +24,15 @@ export enum ACTION {
   'THREE_BET',
   'FOUR_BET'
 };
+
+export enum POSITION {
+  'UTG',
+  'UTG1',
+  'UTG2',
+  'LJ',
+  'HJ',
+  'CO',
+  'BTN',
+  'SB',
+  'BB'
+}
