@@ -1,0 +1,11 @@
+<section
+  class="pk-chart-row"
+  *ngFor="let rows of chartMatrix">
+  <div
+    class="pk-chart-cell-container"
+    *ngFor="let hands of rows">
+    <div class="pk-chart-cell" [class.action--two-bet]="hands.action === ACTION.TWO_BET">
+      <span class="pk-chart-text">{{hands.hands}}</span>
+    </div>
+  </div>
+</section>

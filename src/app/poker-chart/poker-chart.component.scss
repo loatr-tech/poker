@@ -1,0 +1,50 @@
+:host {
+  max-width: 1024px;
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  .pk-chart-row {
+    display: flex;
+    align-items: center;
+
+    .pk-chart-cell-container {
+      flex: 1;
+      padding: 3px 3px 0 3px;
+
+      .pk-chart-cell {
+        border: 1px solid #d5d5d5;
+        width: 100%;
+        padding-top: 100%;
+        position: relative;
+        border-radius: 2px;
+
+        .pk-chart-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    .pk-chart-row .pk-chart-cell-container {
+      padding: 2px 2px 0 2px;
+    }
+  }
+  @media (max-width: 576px) {
+    font-size: 10px;
+    .pk-chart-row .pk-chart-cell-container {
+      padding: 1px 1px 0 2px;
+    }
+  }
+}
+
+.action--two-bet {
+  background-color: aqua;
+}
