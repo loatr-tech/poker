@@ -28,17 +28,19 @@ export class PokerChartComponent implements OnInit {
       chartMatrix.push(row);
     }
 
-    console.log(this.range.hands);
-    this.range[0].hands.forEach((element: string) => {
-      const [firstCard, secondCard, suit] = element.split('');
-      const firstCardPos = POKER_ORDER[firstCard];
-      const secondCardPos = POKER_ORDER[secondCard];
-      if (suit === 's') {
-        chartMatrix[firstCardPos][secondCardPos].action = ACTION.TWO_BET;
-      } else {
-        chartMatrix[secondCardPos][firstCardPos].action = ACTION.TWO_BET;
-      }
+    this.range.forEach(({ action, hands }: { action: ACTION, hands: string[] }) => {
+      hands.forEach((element: string) => {
+        const [firstCard, secondCard, suit] = element.split('');
+        const firstCardPos = POKER_ORDER[firstCard];
+        const secondCardPos = POKER_ORDER[secondCard];
+        if (suit === 's') {
+          chartMatrix[firstCardPos][secondCardPos].action = action;
+        } else {
+          chartMatrix[secondCardPos][firstCardPos].action = action;
+        }
+      });
     });
+
     this.chartMatrix = chartMatrix;
   }
 
