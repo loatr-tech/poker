@@ -1,15 +1,15 @@
 :host {
-  max-width: 1024px;
+  max-width: 768px;
   display: block;
   margin: 0 auto;
-  font-size: 16px;
+  font-size: 15px;
   .pk-chart-row {
     display: flex;
     align-items: center;
 
     .pk-chart-cell-container {
       flex: 1;
-      padding: 3px 3px 0 3px;
+      padding: 2px 2px 0 2px;
 
       .pk-chart-cell {
         border: 1px solid #d5d5d5;
@@ -30,18 +30,25 @@
     }
   }
 
-
-  @media (max-width: 768px) {
-    font-size: 13px;
-    .pk-chart-row .pk-chart-cell-container {
-      padding: 2px 2px 0 2px;
-    }
-  }
   @media (max-width: 576px) {
     font-size: 10px;
     .pk-chart-row .pk-chart-cell-container {
       padding: 1px 1px 0 2px;
     }
+  }
+}
+
+.pk-chart-labels {
+  display: flex;
+  padding: 10px;
+  .pk-action-label-container {
+    margin-right: 10px;
+  }
+  .pk-action-label {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 4px;
   }
 }
 

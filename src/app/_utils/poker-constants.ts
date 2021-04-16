@@ -16,14 +16,24 @@ export const POKER_ORDER: any = {
 };
 
 export enum ACTION {
-  'LIMP',
-  'CALL',
-  'FOLD',
-  'BLUFF',
-  'TWO_BET',
-  'THREE_BET',
-  'FOUR_BET'
+  LIMP = 'LIMP',
+  CALL = 'CALL',
+  FOLD = 'FOLD',
+  BLUFF = 'BLUFF',
+  TWO_BET = 'TWO_BET',
+  THREE_BET = 'THREE_BET',
+  FOUR_BET = 'FOUR_BET'
 };
+
+export const actionText = {
+  [ACTION.LIMP]: 'Limp',
+  [ACTION.CALL]: 'Call',
+  [ACTION.FOLD]: 'Fold',
+  [ACTION.BLUFF]: 'Bluff',
+  [ACTION.TWO_BET]: 'Two bet',
+  [ACTION.THREE_BET]: 'Three bet',
+  [ACTION.FOUR_BET]: 'Four bet',
+}
 
 export enum POSITION {
   'UTG',

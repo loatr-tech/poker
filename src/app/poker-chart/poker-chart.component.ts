@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { POKER_SIZE, POKER_ORDER, ACTION } from '../_utils/poker-constants';
+import { POKER_SIZE, POKER_ORDER, ACTION, actionText } from '../_utils/poker-constants';
 import { PokerHands } from '../_models/poker-hands';
 @Component({
   selector: 'pk-poker-chart',
@@ -9,13 +9,17 @@ import { PokerHands } from '../_models/poker-hands';
 export class PokerChartComponent implements OnInit {
   @Input() range: any;
 
-  chartMatrix: PokerHands[][] = [];
   ACTION = ACTION;
+
+  chartMatrix: PokerHands[][] = [];
+  labels: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     const chartMatrix: any[] = [];
+    const labels: any[] = [];
+
     for (let i = 0; i < POKER_SIZE.length; i++) {
       const row = [];
       const firstCard = POKER_SIZE[i];
@@ -29,6 +33,10 @@ export class PokerChartComponent implements OnInit {
     }
 
     this.range.forEach(({ action, hands }: { action: ACTION, hands: string[] }) => {
+      labels.push({
+        action,
+        text: actionText[action]
+      });
       hands.forEach((element: string) => {
         const [firstCard, secondCard, suit] = element.split('');
         const firstCardPos = POKER_ORDER[firstCard];
@@ -42,6 +50,7 @@ export class PokerChartComponent implements OnInit {
     });
 
     this.chartMatrix = chartMatrix;
+    this.labels = labels;
   }
 
 

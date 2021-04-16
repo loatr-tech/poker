@@ -17,3 +17,21 @@
     </div>
   </div>
 </section>
+
+<!-- Labels -->
+<section class="pk-chart-labels">
+  <div
+    class="pk-action-label-container"
+    *ngFor="let label of labels">
+    <span
+      class="pk-action-label"
+      [class.action--limp]="label.action === ACTION.LIMP"
+      [class.action--call]="label.action === ACTION.CALL"
+      [class.action--bluff]="label.action === ACTION.BLUFF"
+      [class.action--two-bet]="label.action === ACTION.TWO_BET"
+      [class.action--three-bet]="label.action === ACTION.THREE_BET"
+      [class.action--four-bet]="label.action === ACTION.FOUR_BET"
+    ></span>
+    <span>{{label.text}}</span>
+  </div>
+</section>
