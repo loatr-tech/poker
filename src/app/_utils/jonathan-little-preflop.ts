@@ -14,22 +14,27 @@ const UTG = {
     },
     {
       label: 'RFI vs 3Bet',
-      range: [
+      opponent: [
         {
-          action: ACTION.CALL,
-          hands: ['99','AJs','AQs','KQs','QQ','QJs','JJ','JTs','TT'],
-        },
-        {
-          action: ACTION.FOUR_BET,
-          hands: ['AA','AKs','AKo','KK'],
-        },
-        {
-          action: ACTION.BLUFF,
-          hands: ['ATs','AQo'],
-        },
-        {
-          action: ACTION.FOLD,
-          hands: ['66','77','88','A9s','A5s','KJs','KTs','QTs','T9s','98s'],
+          label: 'UTG+1',
+          range: [
+            {
+              action: ACTION.CALL,
+              hands: ['99','AJs','AQs','KQs','QQ','QJs','JJ','JTs','TT'],
+            },
+            {
+              action: ACTION.FOUR_BET,
+              hands: ['AA','AKs','AKo','KK'],
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['ATs','AQo'],
+            },
+            {
+              action: ACTION.FOLD,
+              hands: ['66','77','88','A9s','A5s','KJs','KTs','QTs','T9s','98s'],
+            }
+          ]
         }
       ]
     }
@@ -45,6 +50,32 @@ const UTC_1 = {
         {
           action: ACTION.TWO_BET,
           hands: ['66','77','88','99','AQo','AKo','AA','AKs','AQs','AJs','ATs','A9s','A5s','KK','QQ','JJ','TT','KTs','QTs','JTs','98s','T9s','QJs','KJs','KQs','K9s','Q9s','J9s','AJo','KQo','A4s','A6s','A7s','A8s','87s'],
+        }
+      ]
+    },
+    {
+      label: 'RFI vs 3Bet',
+      opponent: [
+        {
+          label: 'UTG+2',
+          range: [
+            {
+              action: ACTION.CALL,
+              hands: ['77','88','99','AQs','AJs','KJs','KQs','QQ','QJs','JJ','JTs','TT','T9s'],
+            },
+            {
+              action: ACTION.FOUR_BET,
+              hands: ['AA','AKs','AKo','KK'],
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['A5s','ATs','A9s','AQo','AJo'],
+            },
+            {
+              action: ACTION.FOLD,
+              hands: ['66','A4s','A6s','A7s','A8s','KTs','K9s','Q9s','J9s','QTs','98s','87s','ATo','KQo'],
+            }
+          ]
         }
       ]
     }
@@ -172,7 +203,7 @@ const BB = {
   ],
 };
 
-export const JL_PREFLOP = [
+export const JL_PREFLOP: any[] = [
   UTG,
   UTC_1,
   UTC_2,
