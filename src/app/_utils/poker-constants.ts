@@ -22,7 +22,8 @@ export enum ACTION {
   BLUFF = 'BLUFF',
   TWO_BET = 'TWO_BET',
   THREE_BET = 'THREE_BET',
-  FOUR_BET = 'FOUR_BET'
+  FOUR_BET = 'FOUR_BET',
+  NULL = 'NULL'
 };
 
 export const actionText = {
@@ -33,6 +34,7 @@ export const actionText = {
   [ACTION.TWO_BET]: 'Two bet',
   [ACTION.THREE_BET]: 'Three bet',
   [ACTION.FOUR_BET]: 'Four bet',
+  [ACTION.NULL]: '',
 }
 
 export enum POSITION {

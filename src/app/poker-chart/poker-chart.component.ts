@@ -49,6 +49,8 @@ export class PokerChartComponent implements OnInit {
       });
     });
 
+    console.log(chartMatrix);
+
     this.chartMatrix = chartMatrix;
     this.labels = labels;
   }

@@ -11,6 +11,27 @@ const UTG = {
           hands: ['66','77','88','99','AQo','AKo','AA','AKs','AQs','AJs','ATs','A9s','A5s','KK','QQ','JJ','TT','KTs','QTs','JTs','98s','T9s','QJs','KJs','KQs'],
         }
       ]
+    },
+    {
+      label: 'RFI vs 3Bet',
+      range: [
+        {
+          action: ACTION.CALL,
+          hands: ['99','AJs','AQs','KQs','QQ','QJs','JJ','JTs','TT'],
+        },
+        {
+          action: ACTION.FOUR_BET,
+          hands: ['AA','AKs','AKo','KK'],
+        },
+        {
+          action: ACTION.BLUFF,
+          hands: ['ATs','AQo'],
+        },
+        {
+          action: ACTION.FOLD,
+          hands: ['66','77','88','A9s','A5s','KJs','KTs','QTs','T9s','98s'],
+        }
+      ]
     }
   ]
 };
