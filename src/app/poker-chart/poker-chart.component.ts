@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { POKER_SIZE, POKER_ORDER, ACTION, actionText } from '../_utils/poker-constants';
 import { PokerHands } from '../_models/poker-hands';
+import { PokerTrainingModalComponent } from '../poker-training-modal/poker-training-modal.component';
+
+
 @Component({
   selector: 'pk-poker-chart',
   templateUrl: './poker-chart.component.html',
@@ -14,7 +18,7 @@ export class PokerChartComponent implements OnInit {
   chartMatrix: PokerHands[][] = [];
   labels: any[] = [];
 
-  constructor() { }
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
     const chartMatrix: any[] = [];
@@ -49,11 +53,14 @@ export class PokerChartComponent implements OnInit {
       });
     });
 
-    console.log(chartMatrix);
-
     this.chartMatrix = chartMatrix;
     this.labels = labels;
   }
 
+  startTraining() {
+    this._dialog.open(PokerTrainingModalComponent, {
+      data: this.chartMatrix
+    });
+  }
 
 }
