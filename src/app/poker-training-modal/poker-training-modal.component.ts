@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PokerHands } from '../_models/poker-hands';
-import { POKER_SIZE } from '../_utils/poker-constants';
+import { ACTION, POKER_SIZE, actionText, POKER_SUITS } from '../_utils/poker-constants';
 
 @Component({
   selector: 'pk-poker-training-modal',
@@ -10,16 +10,56 @@ import { POKER_SIZE } from '../_utils/poker-constants';
 })
 export class PokerTrainingModalComponent implements OnInit {
   chartMatrix: PokerHands[][] = [];
+  randomHands: string[] = [];
+  actions: any[] = [];
   trainingIndex = 0;
 
+  get currentHands(): any {
+    if (this.randomHands.length) {
+      const [firstSize, secondSize, suit] = this.randomHands[this.trainingIndex].split('');
+      const pokerSuits = [...POKER_SUITS];
+      // Shuffle
+      for (let i = pokerSuits.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pokerSuits[i], pokerSuits[j]] = [pokerSuits[j], pokerSuits[i]];
+      }
+      let currentSuits: any[] = [];
+      if (suit === 's') {
+        currentSuits = [pokerSuits[0], pokerSuits[0]];
+      } else {
+        currentSuits = [pokerSuits[0], pokerSuits[1]];
+      }
+      return {
+        firstCard: {
+          size: firstSize,
+          suit: currentSuits[0],
+        },
+        secondCard: {
+          size: secondSize,
+          suit: currentSuits[1],
+        }
+      }
+    } else {
+      return null
+    }
+  }
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) private _data: PokerHands[][]
+    @Inject(MAT_DIALOG_DATA) private _data: any
   ) {
-    this.chartMatrix = this._data;
+    this.chartMatrix = this._data.hands;
+    this.actions = [
+      ...this._data.labels,
+      {
+        action: ACTION.NULL,
+        text: actionText[ACTION.NULL]
+      }
+    ];
   }
 
   ngOnInit(): void {
     this._randomHandsGenerator();
+    this._getPotentialActions();
   }
 
   private _randomHandsGenerator() {
@@ -42,6 +82,11 @@ export class PokerTrainingModalComponent implements OnInit {
       [randomHands[i], randomHands[j]] = [randomHands[j], randomHands[i]];
     }
 
+    this.randomHands = randomHands;
     console.log(randomHands);
+  }
+
+  private _getPotentialActions() {
+
   }
 }

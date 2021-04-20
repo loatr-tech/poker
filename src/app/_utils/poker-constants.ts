@@ -15,6 +15,25 @@ export const POKER_ORDER: any = {
   '2': 12,
 };
 
+export const POKER_SUITS = [
+  {
+    symbol: '♦',
+    color: 'red'
+  },
+  {
+    symbol: '♥',
+    color: 'red'
+  },
+  {
+    symbol: '♣',
+    color: 'black'
+  },
+  {
+    symbol: '♠',
+    color: 'black'
+  },
+];
+
 export enum ACTION {
   LIMP = 'LIMP',
   CALL = 'CALL',
@@ -34,7 +53,7 @@ export const actionText = {
   [ACTION.TWO_BET]: 'Two bet',
   [ACTION.THREE_BET]: 'Three bet',
   [ACTION.FOUR_BET]: 'Four bet',
-  [ACTION.NULL]: '',
+  [ACTION.NULL]: 'Fold',
 }
 
 export enum POSITION {

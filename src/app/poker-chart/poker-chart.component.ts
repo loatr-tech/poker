@@ -59,7 +59,10 @@ export class PokerChartComponent implements OnInit {
 
   startTraining() {
     this._dialog.open(PokerTrainingModalComponent, {
-      data: this.chartMatrix
+      data: {
+        hands: this.chartMatrix,
+        labels: this.labels,
+      }
     });
   }
 

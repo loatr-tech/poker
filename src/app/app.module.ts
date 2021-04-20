@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokerChartComponent } from './poker-chart/poker-chart.component';
 import { PokerTrainingModalComponent } from './poker-training-modal/poker-training-modal.component';
+import { PokerCardComponent } from './poker-card/poker-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokerChartComponent,
-    PokerTrainingModalComponent
+    PokerTrainingModalComponent,
+    PokerCardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

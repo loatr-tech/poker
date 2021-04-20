@@ -1,4 +1,21 @@
 <h2 mat-dialog-title>Training</h2>
 <mat-dialog-content>
-  Training
+  <!-- Cards -->
+  <section>
+    <pk-poker-card
+      [card]="this.currentHands.firstCard"
+    ></pk-poker-card>
+    <pk-poker-card
+      [card]="this.currentHands.secondCard"
+    ></pk-poker-card>
+  </section>
+
+  <!-- Actions -->
+  <section>
+    <button
+      *ngFor="let action of actions"
+    >
+      {{action.text}}
+    </button>
+  </section>
 </mat-dialog-content>
