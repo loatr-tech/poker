@@ -12,37 +12,8 @@ export class PokerTrainingModalComponent implements OnInit {
   chartMatrix: PokerHands[][] = [];
   randomHands: string[] = [];
   actions: any[] = [];
+  currentHands: any;
   trainingIndex = 0;
-
-  get currentHands(): any {
-    if (this.randomHands.length) {
-      const [firstSize, secondSize, suit] = this.randomHands[this.trainingIndex].split('');
-      const pokerSuits = [...POKER_SUITS];
-      // Shuffle
-      for (let i = pokerSuits.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pokerSuits[i], pokerSuits[j]] = [pokerSuits[j], pokerSuits[i]];
-      }
-      let currentSuits: any[] = [];
-      if (suit === 's') {
-        currentSuits = [pokerSuits[0], pokerSuits[0]];
-      } else {
-        currentSuits = [pokerSuits[0], pokerSuits[1]];
-      }
-      return {
-        firstCard: {
-          size: firstSize,
-          suit: currentSuits[0],
-        },
-        secondCard: {
-          size: secondSize,
-          suit: currentSuits[1],
-        }
-      }
-    } else {
-      return null
-    }
-  }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private _data: any
@@ -59,7 +30,15 @@ export class PokerTrainingModalComponent implements OnInit {
 
   ngOnInit(): void {
     this._randomHandsGenerator();
-    this._getPotentialActions();
+    this._getCurrentHand();
+  }
+
+  chooseAction(action: any) {
+    console.log(action);
+    if (this.trainingIndex < this.randomHands.length - 1) {
+      this.trainingIndex++;
+      this._getCurrentHand();
+    }
   }
 
   private _randomHandsGenerator() {
@@ -83,10 +62,35 @@ export class PokerTrainingModalComponent implements OnInit {
     }
 
     this.randomHands = randomHands;
-    console.log(randomHands);
   }
 
-  private _getPotentialActions() {
-
+  private _getCurrentHand() {
+    if (this.randomHands.length) {
+      const [firstSize, secondSize, suit] = this.randomHands[this.trainingIndex].split('');
+      const pokerSuits = [...POKER_SUITS];
+      // Shuffle
+      for (let i = pokerSuits.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pokerSuits[i], pokerSuits[j]] = [pokerSuits[j], pokerSuits[i]];
+      }
+      let currentSuits: any[] = [];
+      if (suit === 's') {
+        currentSuits = [pokerSuits[0], pokerSuits[0]];
+      } else {
+        currentSuits = [pokerSuits[0], pokerSuits[1]];
+      }
+      this.currentHands = {
+        firstCard: {
+          size: firstSize,
+          suit: currentSuits[0],
+        },
+        secondCard: {
+          size: secondSize,
+          suit: currentSuits[1],
+        }
+      }
+    } else {
+      this.currentHands = {};
+    }
   }
 }

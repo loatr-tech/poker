@@ -14,6 +14,7 @@
   <section>
     <button
       *ngFor="let action of actions"
+      (click)="this.chooseAction(action)"
     >
       {{action.text}}
     </button>
