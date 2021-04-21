@@ -11,6 +11,7 @@ import { PokerTrainingModalComponent } from '../poker-training-modal/poker-train
   styleUrls: ['./poker-chart.component.scss']
 })
 export class PokerChartComponent implements OnInit {
+  @Input() label: string = '';
   @Input() range: any;
 
   ACTION = ACTION;
@@ -62,6 +63,7 @@ export class PokerChartComponent implements OnInit {
       data: {
         hands: this.chartMatrix,
         labels: this.labels,
+        isRFI: this.label === 'RFI'
       }
     });
   }

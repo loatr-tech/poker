@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PokerHands } from '../_models/poker-hands';
-import { ACTION, POKER_SIZE, actionText, POKER_SUITS } from '../_utils/poker-constants';
+import { ACTION, POKER_SIZE, actionText, POKER_SUITS, POKER_ORDER } from '../_utils/poker-constants';
 
 @Component({
   selector: 'pk-poker-training-modal',
@@ -24,7 +24,7 @@ export class PokerTrainingModalComponent implements OnInit {
       ...this._data.labels,
       {
         action: ACTION.NULL,
-        text: actionText[ACTION.NULL]
+        text: this._data.isRFI ? actionText[ACTION.NULL] : 'Fold ealier'
       }
     ];
   }
@@ -35,7 +35,13 @@ export class PokerTrainingModalComponent implements OnInit {
   }
 
   chooseAction(action: any) {
-    console.log(action);
+    const accurateAction = this.chartMatrix[this.currentHands.firstCard.index][this.currentHands.secondCard.index];
+    console.log(action, accurateAction);
+    if (action.action !== accurateAction.action) {
+      alert(`You're so fish! You should ${actionText[accurateAction.action]}`);
+    }
+
+    // Go to next hand
     if (this.trainingIndex < this.randomHands.length - 1) {
       this.trainingIndex++;
       this._getCurrentHand();
@@ -84,10 +90,12 @@ export class PokerTrainingModalComponent implements OnInit {
         firstCard: {
           size: firstSize,
           suit: currentSuits[0],
+          index: POKER_ORDER[firstSize],
         },
         secondCard: {
           size: secondSize,
           suit: currentSuits[1],
+          index: POKER_ORDER[secondSize],
         }
       }
     } else {
