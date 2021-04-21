@@ -9,6 +9,7 @@ import { ACTION, POKER_SIZE, actionText, POKER_SUITS } from '../_utils/poker-con
   styleUrls: ['./poker-training-modal.component.scss']
 })
 export class PokerTrainingModalComponent implements OnInit {
+  ACTION = ACTION;
   chartMatrix: PokerHands[][] = [];
   randomHands: string[] = [];
   actions: any[] = [];

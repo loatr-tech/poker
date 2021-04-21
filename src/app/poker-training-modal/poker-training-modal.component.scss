@@ -1,0 +1,36 @@
+.pk-training-modal-actions {
+  > button {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}
+
+.action--limp {
+  background-color: #596275;
+  color: white;
+}
+
+.action--call {
+  background-color: #45aaf2;
+}
+
+.action--bluff {
+  background-color: #f8a5c2;
+}
+
+.action--fold {
+  background-color: #4b6584;
+  color: white;
+}
+
+.action--two-bet {
+  background-color: #7efff5;
+}
+
+.action--three-bet {
+  background-color: orange;
+}
+
+.action--four-bet {
+  background-color: red;
+}

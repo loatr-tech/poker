@@ -11,9 +11,17 @@
   </section>
 
   <!-- Actions -->
-  <section>
+  <section class="pk-training-modal-actions">
     <button
+      mat-raised-button
       *ngFor="let action of actions"
+      [class.action--limp]="action.action === ACTION.LIMP"
+      [class.action--call]="action.action === ACTION.CALL"
+      [class.action--bluff]="action.action === ACTION.BLUFF"
+      [class.action--fold]="action.action === ACTION.FOLD"
+      [class.action--two-bet]="action.action === ACTION.TWO_BET"
+      [class.action--three-bet]="action.action === ACTION.THREE_BET"
+      [class.action--four-bet]="action.action === ACTION.FOUR_BET"
       (click)="this.chooseAction(action)"
     >
       {{action.text}}

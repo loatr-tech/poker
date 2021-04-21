@@ -1,14 +1,12 @@
-<div class="pk-title-container">
-  <h3>Preflop Strategy</h3>
-  <mat-form-field appearance="fill">
-    <mat-label>Jonathan Little</mat-label>
-    <mat-select>
-      <mat-option [value]="'JL'">
-        Jonathan Little
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+<mat-form-field appearance="fill" class="pk-title-strategy-picker">
+  <mat-label>Preflop Strategy</mat-label>
+  <mat-select>
+    <mat-option [value]="'JL'" selected>
+      Jonathan Little
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
   <mat-tab
     *ngFor="let position of preflopStrategy"
