@@ -11,6 +11,7 @@ import { ACTION, POKER_SIZE, actionText, POKER_SUITS, POKER_ORDER } from '../_ut
 })
 export class PokerTrainingModalComponent implements OnInit {
   ACTION = ACTION;
+  title: string = 'Training';
   chartMatrix: PokerHands[][] = [];
   randomHands: string[] = [];
   actions: any[] = [];
@@ -22,6 +23,7 @@ export class PokerTrainingModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private _data: any,
     private _snackBar: MatSnackBar
   ) {
+    this.title = this._data.title;
     this.chartMatrix = this._data.hands;
     this.actions = [
       ...this._data.labels,
