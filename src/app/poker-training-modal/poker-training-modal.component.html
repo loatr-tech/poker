@@ -1,34 +1,42 @@
 <h2 mat-dialog-title>{{this.title}}</h2>
 <mat-dialog-content>
-  <!-- Cards -->
-  <section class="pk-training-modal-cards">
-    <pk-poker-card
-      [card]="this.currentHands.firstCard"
-    ></pk-poker-card>
-    <pk-poker-card
-      [card]="this.currentHands.secondCard"
-    ></pk-poker-card>
-  </section>
-  <p class="pk-training-modal-counter">
-    {{this.trainingIndex + 1}}/{{randomHands.length}} ({{this.trainingIndex - this.wrongDecision}} ✔, {{this.wrongDecision}} ✖)
-  </p>
+  <div *ngIf="this.trainingIndex < randomHands.length else finishTraining">
+    <!-- Cards -->
+    <section class="pk-training-modal-cards">
+      <pk-poker-card
+        [card]="this.currentHands.firstCard"
+      ></pk-poker-card>
+      <pk-poker-card
+        [card]="this.currentHands.secondCard"
+      ></pk-poker-card>
+    </section>
 
-  <!-- Actions -->
-  <section class="pk-training-modal-actions">
-    <button
-      mat-raised-button
-      *ngFor="let action of actions"
-      [class.action--limp]="action.action === ACTION.LIMP"
-      [class.action--call]="action.action === ACTION.CALL"
-      [class.action--bluff]="action.action === ACTION.BLUFF"
-      [class.action--fold]="action.action === ACTION.FOLD"
-      [class.action--two-bet]="action.action === ACTION.TWO_BET"
-      [class.action--three-bet]="action.action === ACTION.THREE_BET"
-      [class.action--four-bet]="action.action === ACTION.FOUR_BET"
-      (click)="this.chooseAction(action)"
-      [disabled]="this.trainingIndex + 1 === randomHands.length"
-    >
-      {{action.text}}
-    </button>
-  </section>
+    <p class="pk-training-modal-counter">
+      {{this.trainingIndex + 1}}/{{randomHands.length}} ({{this.trainingIndex - this.wrongDecision}} ✔, {{this.wrongDecision}} ✖)
+    </p>
+
+    <!-- Actions -->
+    <section class="pk-training-modal-actions">
+      <button
+        mat-raised-button
+        *ngFor="let action of actions"
+        [class.action--limp]="action.action === ACTION.LIMP"
+        [class.action--call]="action.action === ACTION.CALL"
+        [class.action--bluff]="action.action === ACTION.BLUFF"
+        [class.action--fold]="action.action === ACTION.FOLD"
+        [class.action--two-bet]="action.action === ACTION.TWO_BET"
+        [class.action--three-bet]="action.action === ACTION.THREE_BET"
+        [class.action--four-bet]="action.action === ACTION.FOUR_BET"
+        (click)="this.chooseAction(action)"
+        [disabled]="this.trainingIndex === randomHands.length"
+      >
+        {{action.text}}
+      </button>
+    </section>
+  </div>
+
+  <ng-template #finishTraining>
+    <h3>Your training has been finished!</h3>
+    <button mat-raised-button color="accent">See wrong decisions</button>
+  </ng-template>
 </mat-dialog-content>

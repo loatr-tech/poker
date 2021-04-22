@@ -16,7 +16,7 @@ export class PokerTrainingModalComponent implements OnInit {
   randomHands: string[] = [];
   actions: any[] = [];
   currentHands: any;
-  trainingIndex = 0;
+  trainingIndex = 166;
   wrongDecision = 0;
 
   constructor(
@@ -54,8 +54,8 @@ export class PokerTrainingModalComponent implements OnInit {
     }
 
     // Go to next hand
-    if (this.trainingIndex < this.randomHands.length - 1) {
-      this.trainingIndex++;
+    this.trainingIndex++;
+    if (this.trainingIndex < this.randomHands.length) {
       this._getCurrentHand();
     }
   }
