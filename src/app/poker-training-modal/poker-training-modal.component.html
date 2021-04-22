@@ -9,6 +9,9 @@
       [card]="this.currentHands.secondCard"
     ></pk-poker-card>
   </section>
+  <p class="pk-training-modal-counter">
+    {{this.trainingIndex + 1}}/{{randomHands.length}} ({{this.trainingIndex - this.wrongDecision}} ✔, {{this.wrongDecision}} ✖)
+  </p>
 
   <!-- Actions -->
   <section class="pk-training-modal-actions">
@@ -23,6 +26,7 @@
       [class.action--three-bet]="action.action === ACTION.THREE_BET"
       [class.action--four-bet]="action.action === ACTION.FOUR_BET"
       (click)="this.chooseAction(action)"
+      [disabled]="this.trainingIndex + 1 === randomHands.length"
     >
       {{action.text}}
     </button>

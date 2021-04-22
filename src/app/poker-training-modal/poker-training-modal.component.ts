@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PokerHands } from '../_models/poker-hands';
 import { ACTION, POKER_SIZE, actionText, POKER_SUITS, POKER_ORDER } from '../_utils/poker-constants';
 
@@ -15,9 +16,11 @@ export class PokerTrainingModalComponent implements OnInit {
   actions: any[] = [];
   currentHands: any;
   trainingIndex = 0;
+  wrongDecision = 0;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private _data: any
+    @Inject(MAT_DIALOG_DATA) private _data: any,
+    private _snackBar: MatSnackBar
   ) {
     this.chartMatrix = this._data.hands;
     this.actions = [
@@ -36,9 +39,16 @@ export class PokerTrainingModalComponent implements OnInit {
 
   chooseAction(action: any) {
     const accurateAction = this.chartMatrix[this.currentHands.firstCard.index][this.currentHands.secondCard.index];
-    console.log(action, accurateAction);
     if (action.action !== accurateAction.action) {
-      alert(`You're so fish! You should ${actionText[accurateAction.action]}`);
+      this.wrongDecision++;
+      this._snackBar.open(
+        `You're so fish! You should ${actionText[accurateAction.action]} ${accurateAction.hands}`,
+        'Got it',
+        {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        }
+      );
     }
 
     // Go to next hand
@@ -81,21 +91,26 @@ export class PokerTrainingModalComponent implements OnInit {
         [pokerSuits[i], pokerSuits[j]] = [pokerSuits[j], pokerSuits[i]];
       }
       let currentSuits: any[] = [];
+      let firstIndex, secondIndex;
       if (suit === 's') {
         currentSuits = [pokerSuits[0], pokerSuits[0]];
+        firstIndex = POKER_ORDER[firstSize];
+        secondIndex = POKER_ORDER[secondSize];
       } else {
         currentSuits = [pokerSuits[0], pokerSuits[1]];
+        firstIndex = POKER_ORDER[secondSize];
+        secondIndex = POKER_ORDER[firstSize];
       }
       this.currentHands = {
         firstCard: {
           size: firstSize,
           suit: currentSuits[0],
-          index: POKER_ORDER[firstSize],
+          index: firstIndex,
         },
         secondCard: {
           size: secondSize,
           suit: currentSuits[1],
-          index: POKER_ORDER[secondSize],
+          index: secondIndex,
         }
       }
     } else {
