@@ -66,7 +66,8 @@ export class PokerChartComponent implements OnInit {
         labels: this.labels,
         isRFI: this.label === 'RFI',
         title: `${this.position} ${this.label}`
-      }
+      },
+      maxWidth: '90vw',
     });
   }
 

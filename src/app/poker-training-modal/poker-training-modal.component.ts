@@ -16,7 +16,7 @@ export class PokerTrainingModalComponent implements OnInit {
   randomHands: string[] = [];
   actions: any[] = [];
   currentHands: any;
-  trainingIndex = 166;
+  trainingIndex = 0;
   wrongDecision = 0;
 
   constructor(
