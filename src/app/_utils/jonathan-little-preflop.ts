@@ -153,6 +153,54 @@ const BTN = {
           hands: ['22','33','44','55','66','77','88','99','AQo','AKo','AA','AKs','AQs','AJs','ATs','A9s','A5s','KK','QQ','JJ','TT','KTs','QTs','JTs','87s','98s','T9s','QJs','KJs','KQs','K9s','Q9s','J9s','AJo','KQo','A4s','A6s','A7s','A8s','76s','KJo','ATo','65s','QJo','K8s','T8s','97s','54s','A3s','A2s','K7s','A9o','KTo','QTo','JTo','64s','75s','86s','Q8s','J8s','K2s','K6s','K5s','K4s','K3s','Q7s','Q6s','Q5s','Q4s','Q3s','Q2s','J6s','T6s','96s','J7s','T7s','74s','85s','53s','43s','K9o','K8o','K7o','98o','T8o','J8o','Q8o','Q9o','J9o','T9o','A8o','A7o','A6o','A5o','A4o','A3o','A2o','97o','87o','76o'],
         }
       ]
+    },
+    {
+      label: 'RFI vs 3Bet',
+      opponent: [
+        {
+          label: 'SB/BB',
+          range: [
+            {
+              action: ACTION.CALL,
+              hands: ['22','33','44','55','66','77','88','ATs','A9s','A8s','A2s','A3s','A4s','A5s','A6s','A7s','K7s','K8s','K9s','KTs','KJs','KQs','KQo','KJo','AJo','QJo','KTo','A9o','ATo','QJs','QTs','Q9s','Q8s','J8s','J9s','JTs','T9s','T8s','T7s','97s','98s','87s','76s','65s'],
+            },
+            {
+              action: ACTION.FOUR_BET,
+              hands: ['99','AJs','AQs','AKs','AA','AKo','KK','AQo','QQ','JJ','TT'],
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['JTo','QTo','K9o','A8o','A5o','A4o','A3o','K4s','K5s','K6s','Q7s','J7s','86s','75s','64s','54s','43s'],
+            },
+            {
+              action: ACTION.FOLD,
+              hands: ['K2s','K3s','Q2s','Q3s','Q4s','Q5s','Q6s','J6s','T6s','96s','85s','74s','53s','32s','76o','87o','97o','98o','T8o','T9o','J9o','Q9o','K8o','A7o','K7o','A6o','Q8o','J8o','A2o'],
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Facing RFI',
+      opponent: [
+        {
+          label: 'UTG',
+          range: [
+            {
+              action: ACTION.CALL,
+              hands: ['22','33','44','55','66','77','88','99','ATs','KTs','QTs','JTs','TT','JJ','QJs','KJs','AJs','AQs','KQs','T9s','98s','87s'],
+            },
+            {
+              action: ACTION.THREE_BET,
+              hands: ['AA','AKs','KK','AKo','QQ'],
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['KQo','AQo','AJo','A5s','A4s','76s'],
+            }
+          ]
+        }
+      ]
     }
   ],
 };
