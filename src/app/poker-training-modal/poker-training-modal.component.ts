@@ -17,7 +17,8 @@ export class PokerTrainingModalComponent implements OnInit {
   actions: any[] = [];
   currentHands: any;
   trainingIndex = 0;
-  wrongDecision = 0;
+  resultsColumns: string[] = ['hands', 'wrong', 'correct'];
+  wrongDecision: any[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private _data: any,
@@ -39,10 +40,14 @@ export class PokerTrainingModalComponent implements OnInit {
     this._getCurrentHand();
   }
 
-  chooseAction(action: any) {
+  chooseAction(action: { action: ACTION }) {
     const accurateAction = this.chartMatrix[this.currentHands.firstCard.index][this.currentHands.secondCard.index];
     if (action.action !== accurateAction.action) {
-      this.wrongDecision++;
+      this.wrongDecision.push({
+        hands: accurateAction.hands,
+        wrong: this._data.isRFI ? actionText[action.action] : 'Fold ealier',
+        correct: this._data.isRFI ? actionText[accurateAction.action] : 'Fold ealier',
+      });
       this._snackBar.open(
         `You're so fish! You should ${actionText[accurateAction.action]} ${accurateAction.hands}`,
         'Got it',

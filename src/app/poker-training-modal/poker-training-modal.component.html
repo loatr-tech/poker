@@ -12,7 +12,7 @@
     </section>
 
     <p class="pk-training-modal-counter">
-      {{this.trainingIndex + 1}}/{{randomHands.length}} ({{this.trainingIndex - this.wrongDecision}} ✔, {{this.wrongDecision}} ✖)
+      {{this.trainingIndex + 1}}/{{randomHands.length}} ({{this.trainingIndex - this.wrongDecision.length}} ✔, {{this.wrongDecision.length}} ✖)
     </p>
 
     <!-- Actions -->
@@ -37,6 +37,22 @@
 
   <ng-template #finishTraining>
     <h3>Your training has been finished!</h3>
-    <button mat-raised-button color="accent">See wrong decisions</button>
+    <h4>You made {{this.wrongDecision.length}} wrong decisions</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Hands</th>
+          <th>Wrong</th>
+          <th>Correct</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let decision of this.wrongDecision">
+          <td>{{decision.hands}}</td>
+          <td>{{decision.wrong}}</td>
+          <td>{{decision.correct}}</td>
+        </tr>
+      </tbody>
+    </table>
   </ng-template>
 </mat-dialog-content>
