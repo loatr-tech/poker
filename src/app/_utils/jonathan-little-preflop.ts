@@ -227,40 +227,50 @@ const SB = {
     },
     {
       label: 'RFI vs 3Bet',
-      range: [
+      opponent: [
         {
-          action: ACTION.FOUR_BET,
-          hands: ['AKs','AJs','AQs','QQ','JJ','AQo'],
-        },
-        {
-          action: ACTION.CALL,
-          hands: ['ATs','KQs','KJs','KQo','QJs','AJo','KJo','ATo','TT','99','88','95s','85s','74s','43s'],
-        },
-        {
-          action: ACTION.BLUFF,
-          hands: ['K2o','K3o','Q4o','Q5o','J4s'],
-        },
-        {
-          action: ACTION.FOLD,
-          hands: ['J2s','J3s','T4s','T5s','94s','84s','63s','53s','86o','96o','T6o','J6o','Q2o','Q3o','Q6o'],
+          label: 'BB',
+          range: [
+            {
+              action: ACTION.FOUR_BET,
+              hands: ['AKs','AJs','AQs','QQ','JJ','AQo'],
+            },
+            {
+              action: ACTION.CALL,
+              hands: ['ATs','KQs','KJs','KQo','QJs','AJo','KJo','ATo','TT','99','88','95s','85s','74s','43s'],
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['K2o','K3o','Q4o','Q5o','J4s'],
+            },
+            {
+              action: ACTION.FOLD,
+              hands: ['J2s','J3s','T4s','T5s','94s','84s','63s','53s','86o','96o','T6o','J6o','Q2o','Q3o','Q6o'],
+            }
+          ]
         }
       ]
     },
     {
       label: 'Facing RFI',
-      range: [
+      opponent: [
         {
-          action: ACTION.THREE_BET,
-          hands: ['AA','AKs','KK','QQ']
-        },
-        {
-          action: ACTION.CALL,
-          hands: ['77','88','99','AQs','AJs','ATs','KJs','KQs','QJs','JJ','JTs','TT','T9s','AKo','AQo']
-        },
-        {
-          action: ACTION.BLUFF,
-          hands: ['A5s','98s','87s']
-        },
+          label: 'UTG',
+          range: [
+            {
+              action: ACTION.THREE_BET,
+              hands: ['AA','AKs','KK','QQ']
+            },
+            {
+              action: ACTION.CALL,
+              hands: ['77','88','99','AQs','AJs','ATs','KJs','KQs','QJs','JJ','JTs','TT','T9s','AKo','AQo']
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['A5s','98s','87s']
+            },
+          ]
+        }
       ]
     }
   ],
@@ -271,18 +281,23 @@ const BB = {
   options: [
     {
       label: 'Facing RFI',
-      range: [
+      opponent: [
         {
-          action: ACTION.CALL,
-          hands: ['22','33','44','55','66','77','88','99','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','K5s','K6s','K7s','K8s','K9s','KTs','KJs','KQs','QJs','QTs','Q9s','Q8s','Q7s','J7s','T7s','97s','87s','TT','JTo','QTo','KTo','AJo','AQo','AKo','ATo','KQo','KJo','QJo','JJ','JTs','J9s','J8s','T8s','98s','T9s','96s']
-        },
-        {
-          action: ACTION.THREE_BET,
-          hands: ['AA','AKs','AQs','KK','QQ']
-        },
-        {
-          action: ACTION.BLUFF,
-          hands: ['86s','76s','75s','65s','64s','54s','43s']
+          label: 'UTG',
+          range: [
+            {
+              action: ACTION.CALL,
+              hands: ['22','33','44','55','66','77','88','99','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','K5s','K6s','K7s','K8s','K9s','KTs','KJs','KQs','QJs','QTs','Q9s','Q8s','Q7s','J7s','T7s','97s','87s','TT','JTo','QTo','KTo','AJo','AQo','AKo','ATo','KQo','KJo','QJo','JJ','JTs','J9s','J8s','T8s','98s','T9s','96s']
+            },
+            {
+              action: ACTION.THREE_BET,
+              hands: ['AA','AKs','AQs','KK','QQ']
+            },
+            {
+              action: ACTION.BLUFF,
+              hands: ['86s','76s','75s','65s','64s','54s','43s']
+            }
+          ]
         }
       ]
     }
