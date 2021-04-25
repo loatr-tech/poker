@@ -1,11 +1,16 @@
-<mat-form-field appearance="fill" class="pk-title-strategy-picker">
-  <mat-label>Preflop Strategy</mat-label>
-  <mat-select>
-    <mat-option [value]="'JL'" selected>
-      Jonathan Little
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<header class="pk-header">
+  <div class="pk-header-icon">
+    <img src="assets/images/poker_aces.png" alt="poker icon">
+  </div>
+  <mat-form-field appearance="fill" class="pk-header-strategy-picker">
+    <mat-label>Preflop Strategy</mat-label>
+    <mat-select>
+      <mat-option [value]="'JL'" selected>
+        Jonathan Little
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</header>
 
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
   <mat-tab

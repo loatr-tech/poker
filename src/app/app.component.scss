@@ -1,3 +1,15 @@
-.pk-title-strategy-picker {
-  width: 100%;
+.pk-header {
+  display: flex;
+  .pk-header-icon {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, .04);
+    margin-bottom: 1.34375em;
+    border-bottom: 1px solid #9e9e9e;
+    > img {
+      height: 30px;
+    }
+  }
+  .pk-header-strategy-picker {
+    width: 100%;
+  }
 }
